@@ -1,0 +1,28 @@
+{
+  "name": "rain",
+  "version": "1.0.0",
+  "description": "A wallpaper engine.",
+  "main": "./build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lembn/rain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lembn/rain/issues"
+  },
+  "homepage": "https://github.com/lembn/rain#readme",
+  "devDependencies": {
+    "@types/electron": "^1.6.10"
+  },
+  "dependencies": {
+    "electron": "^18.0.1",
+    "typescript": "^4.6.3"
+  }
+}

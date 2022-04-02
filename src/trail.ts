@@ -1,33 +1,33 @@
-import { alphabets, colorSets } from "./config.js";
-import { loadColorset } from "./color.js";
+import { alphabets, colorSets } from "./config";
+import Color, { loadColorset } from "./color";
 
 const alphabet = alphabets.katakanas + alphabets.alphanumeric;
 const colorSet = loadColorset(colorSets.white);
 
 export default class Trail {
-  x;
-  y;
-  width;
-  height;
-  increment;
-  minIncrement;
-  maxIncrement;
-  layerIndex;
-  respawn;
-  background;
-  chars = [alphabet.charAt(Math.floor(Math.random() * alphabet.length))];
-  moved = true;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  increment: number;
+  minIncrement: number;
+  maxIncrement: number;
+  layerIndex: number;
+  respawn: number;
+  background: Color;
+  chars: string[] = [alphabet.charAt(Math.floor(Math.random() * alphabet.length))];
+  moved: boolean = true;
 
   constructor(
-    x,
-    y,
-    width,
-    height,
-    minIncrement,
-    maxIncrement,
-    layerIndex,
-    respawn,
-    background
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    minIncrement: number,
+    maxIncrement: number,
+    layerIndex: number,
+    respawn: number,
+    background: Color
   ) {
     this.x = x;
     this.y = y;
@@ -60,20 +60,20 @@ export default class Trail {
     // TODO: set move to false
   }
 
-  write(ctx) {
+  write(ctx: CanvasRenderingContext2D ) {
     if (!this.moved) return;
 
-    ctx.fillStyle = this.background;
+    ctx.fillStyle = this.background.toString();
     ctx.fillRect(this.x, 0, this.width, this.height);
 
     const char = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
     this.chars.splice(0, 0, char);
-    ctx.fillStyle = colorSet[0];
+    ctx.fillStyle = colorSet[0].toString();
     ctx.fillText(char, this.x, this.y);
 
     for (var i = 1; i < colorSet.length; i++) {
       if (this.chars.length > i - 1) {
-        ctx.fillStyle = colorSet[i];
+        ctx.fillStyle = colorSet[i].toString();
         ctx.fillText(this.chars[i], this.x, this.y - this.increment * i);
       }
     }

@@ -1,6 +1,4 @@
-import Color from "./color.js";
-
-export const alphabets = {
+export const alphabets: AlphabetMap = {
   katakanas:
     "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン",
   alphanumeric: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
@@ -12,7 +10,7 @@ export const alphabets = {
   lem: "lem",
 };
 
-export const colorSets = {
+export const colorSets: ColorsetMap = {
   green: [{ color: "FFF" }, { color: "0000007F" }, { color: "0F0" }],
   white: [{ color: "FFF" }],
   rainbow: [
@@ -40,7 +38,7 @@ export const colorSets = {
   ],
 };
 
-export const layers = [
+export const layers: Layer[] = [
   {
     fontSize: 16,
     speed: 1,

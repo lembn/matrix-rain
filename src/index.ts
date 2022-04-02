@@ -18,6 +18,7 @@
 // TODO: head glow
 // TODO: add blur
 // TODO: super small font size
+// TODO: gradient background
 // TODO: variable alphabet
 // TODO: color map
 // TODO: no tail color map?
@@ -32,9 +33,9 @@
 // TODO: ts
 // TODO: electron
 
-import Color from "./color.js";
-import { layers } from "./config.js";
-import Trail from "./trail.js";
+import Color from "./color";
+import { layers } from "./config";
+import Trail from "./trail";
 
 const fontSize = 16;
 
@@ -45,11 +46,11 @@ const fps = 40;
 const interval = 1000 / fps;
 const minSpeed = fontSize;
 const maxSpeed = fontSize;
-var last;
+var last: number;
 const width = window.innerWidth;
 const height = window.innerHeight;
 
-const columns = [];
+const columns: Trail[] = [];
 for (let i = 0; i < width / fontSize; i++) {
   columns.push(
     new Trail(
@@ -66,25 +67,25 @@ for (let i = 0; i < width / fontSize; i++) {
   );
 }
 
-function createCanvas(layer) {
+function createCanvas(layer: number) {
   const canvas = document.createElement("canvas");
-  canvas.id = layer;
+  canvas.id = layer.toString();
   canvas.width = width;
   canvas.height = height;
-  canvas.style.zIndex = layer;
-  canvas.style.top = 0;
-  canvas.style.left = 0;
+  canvas.style.zIndex = layer.toString();
+  canvas.style.top = "0";
+  canvas.style.left = "0";
   canvas.style.position = "absolute";
 
   const ctx = canvas.getContext("2d");
   ctx.font = fontSize + "px monospace";
 
-  document.getElementById("container").appendChild(canvas);
+  document.getElementById("container")!.appendChild(canvas);
 }
 
 function draw() {
   for (let layer = 0; layer < layers.length; layer++) {
-    const ctx = document.getElementById(layer).getContext("2d");
+    const ctx = (<HTMLCanvasElement>document.getElementById(layer.toString())).getContext("2d");
     for (let i = 0; i < columns.length; i++) {
       if (columns[i].layerIndex != layer) continue;
 
@@ -94,7 +95,7 @@ function draw() {
   }
 }
 
-function update(current) {
+function update(current: number) {
   if (!last) last = performance.now();
   requestAnimationFrame(update);
   const dt = current - last;

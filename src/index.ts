@@ -1,10 +1,7 @@
-// TODO: add depth
-// - far away ones are darker
-// - far away ones are smaller
+// TODO: for some reason the app can start with canvas size 0, 0 but this can be fixed with force reload.
+// This issue only occurs when trying to use katakanas
 
-// TODO: fix speeds
-
-// create detph layers
+// TODO: create detph layers
 // stack canvases
 // everything on a layer has the same
 // - size
@@ -30,8 +27,6 @@
 // TODO: add pause
 // TODO: draw shapes
 // TODO: container styling
-// TODO: ts
-// TODO: electron
 
 import Color from "./color";
 import { layers } from "./config";
@@ -83,7 +78,7 @@ function createCanvas(layer: number) {
   document.getElementById("container")!.appendChild(canvas);
 }
 
-function draw() {
+function draw() { 
   for (let layer = 0; layer < layers.length; layer++) {
     const ctx = (<HTMLCanvasElement>document.getElementById(layer.toString())).getContext("2d");
     for (let i = 0; i < columns.length; i++) {

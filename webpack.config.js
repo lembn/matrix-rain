@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   mode: process.env.NODE_ENV || "production",
   module: {
@@ -13,5 +15,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js"],
+  },
+  output: {
+    filename: "app.js",
+    path: path.join(__dirname, "public/js"),
   },
 };

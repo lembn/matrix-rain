@@ -2,31 +2,28 @@
 // This issue only occurs when trying to use katakanas
 
 // TODO: create detph layers
-// stack canvases
 // everything on a layer has the same
 // - size
 // - speed
 // - brightness
 // - blur
 
-// TODO: random range is broken
+// TODO: test color defnintions
+
 // TODO: clear trails (atm they leave marks cos transparency filter can't completely wipe them out)
 // TODO: clear trails is optional
 // TODO: head glow
-// TODO: add blur
 // TODO: super small font size
 // TODO: gradient background
-// TODO: variable alphabet
-// TODO: color map
-// TODO: no tail color map?
 // TODO: words instead of characters
-// TODO: add text overlap (instead of re-writing the exact one)
+// TODO: make trail write different character to head (atm if head writes 'J' then body writes 'J')
 // TODO: remove start fade
 // TODO: add gretting pulse
 // TODO: window scaling
 // TODO: add pause
 // TODO: draw shapes
 // TODO: container styling
+// TODO: configuration
 
 import Color from "./color";
 import { layers } from "./config";
